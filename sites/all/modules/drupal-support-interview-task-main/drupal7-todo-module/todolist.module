@@ -11,22 +11,22 @@ function todolist_menu() {
     'access arguments' => array('access todolist'),
   );
   $items['todolist/create_task'] = array( 
-    'title' => 'Creat Task', 
+    'title' => 'Create Task', 
     'page callback' => 'drupal_get_form',
     'page arguments' => array('todolist_create_task_form'), 
-    'access arguments' => array('access todolist'),
+    'access arguments' => array('create todolist'),
     'file' => 'create_task.inc',
   );
   $items['todolist/%/edit_task'] = array(
     'page callback' => 'drupal_get_form',
     'page arguments' => array('todolist_edit_task_form'), 
-    'access arguments' => array('access todolist'),
+    'access arguments' => array('edit todolist'),
     'file' => 'edit_task.inc',
   );
   $items['todolist/%/delete_task'] = array(
     'page callback' => 'todolist_delete_task',
     'page argument' => array(1),
-    'access arguments' => array('access todolist'),
+    'access arguments' => array('delete todolist',),
     'file' => 'delete_task.inc',
   );
   $items['todolist/%/close_tasks'] = array(  
@@ -38,7 +38,7 @@ function todolist_menu() {
     'title' => 'Upload Tasks', 
     'page callback' => 'drupal_get_form',
     'page arguments' => array('upload_tasks_form'), 
-    'access arguments' => array('access todolist'),
+    'access arguments' => array('upload tasks todolist'),
     'file' => 'upload_tasks.inc',
   );
   
@@ -46,7 +46,7 @@ function todolist_menu() {
     'title' => 'Export Tasks', 
     'page callback' => 'drupal_get_form',
     'page arguments' => array('export_tasks_form'), 
-    'access arguments' => array('access todolist'),
+    'access arguments' => array('export_tasks todolist'),
     'file' => 'export_tasks.inc',
   );
 
