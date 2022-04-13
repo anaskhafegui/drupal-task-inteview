@@ -17,6 +17,12 @@ function todolist_schema() {
         'unsigned' => TRUE,
         'not null' => TRUE,
         ),
+        'user_id' => array(
+        'description' => 'The forgin key for user todo.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        ),
       'task_title' => array(
         'description' => 'The task title.',
         'type' => 'varchar',
