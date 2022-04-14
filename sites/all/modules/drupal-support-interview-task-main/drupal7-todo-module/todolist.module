@@ -87,6 +87,9 @@ function todolist_listing_tasks() {
     );
     
     $query = db_select('todolist_task', 'todo');
+    
+    $query->condition('user_id', $user->uid,'=');
+
     $query->fields('todo', array('tid', 'task_title', 'status', 'task_date'));
     
     $table_sort = $query->extend('TableSort') // Add table sort extender.

@@ -66,3 +66,18 @@ function todo_list_install() {
 function todo_list_uninstall() {
   drupal_uninstall_schema('todolist');
 }
+
+/**
+ * Add the new database field
+ */
+function mymodule_update_7100() {
+  $spec = array(
+     'user_id' => array(
+        'description' => 'The forgin key for user todo.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        ),
+  );
+  db_add_field('todolist_task', 'user_id', $spec);
+}

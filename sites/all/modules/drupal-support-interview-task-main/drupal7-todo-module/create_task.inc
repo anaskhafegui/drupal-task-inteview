@@ -59,8 +59,11 @@ function todolist_create_task_validate($form, &$form_state) {
  * Implementation of Create Task Form Submit.
  */
 function todolist_create_task_submit($form, &$form_state) {
+
+   global $user;
     db_insert('todolist_task') 
             ->fields(array(
+            'user_id' => $user->uid,
             'task_title' => $form_state['values']['title'],
             'task_content' => $form_state['values']['content'],
             'status' => 'new',
