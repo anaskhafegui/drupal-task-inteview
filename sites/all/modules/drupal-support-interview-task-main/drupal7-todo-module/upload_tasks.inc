@@ -36,6 +36,7 @@ function upload_tasks_form_validate($form, &$form_state) {
 }
 
 function upload_tasks_form_submit($form, &$form_state) {
+    global $user;
     $file = $form_state['values']['csv_upload_file'];
     $file->status = FILE_STATUS_PERMANENT;
     $file->filename = str_replace(' ', '_', $file->filename);
@@ -50,6 +51,7 @@ function upload_tasks_form_submit($form, &$form_state) {
         $customer = fgetcsv($file);
         db_insert('todolist_task') 
             ->fields(array(
+            'user_id' => $user->uid,
             'task_title' => $customer[0],
             'task_content' => $customer[1],
             'status' => $customer[2],

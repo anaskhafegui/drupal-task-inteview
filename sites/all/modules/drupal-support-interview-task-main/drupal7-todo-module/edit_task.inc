@@ -83,9 +83,11 @@ function todolist_edit_task_validate($form, &$form_state) {
 
 function todolist_edit_task_submit($form, &$form_state)
 {
+    global $user;
     // print_r($form_state['complete form']['status']['#options'][$form_state['values']['status']]);die;
     $id = $form_state['values']['id'];
     $data = array(
+        'user_id'  => $user->uid,
         'task_title' => $form_state['values']['title'],
         'task_content' => $form_state['values']['content'],
         'status' => $form_state['complete form']['status']['#options'][$form_state['values']['status']],

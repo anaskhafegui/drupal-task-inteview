@@ -10,9 +10,10 @@ function export_tasks_form($form, &$form_state){
 }
 
 function export_tasks_form_submit($form, &$form_state){
+    global $user;
     drupal_add_http_header('Content-Type', 'text/csv');
     drupal_add_http_header('Content-Disposition', 'attachment; filename=tasks.csv');
-    $results = db_query("SELECT * FROM {todolist_task}");
+    $results = db_query("SELECT * FROM {todolist_task} WHERE user_id =".$user->uid);
     $csvdata = 'ID,Task Title,Task Content,Status,Date' . PHP_EOL;
     foreach ($results as $record) {
     $row = array();
