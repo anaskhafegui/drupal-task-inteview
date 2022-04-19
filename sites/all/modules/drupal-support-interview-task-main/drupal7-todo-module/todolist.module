@@ -222,7 +222,7 @@ function todolist_block_view($delta = '') {
 function todolist_hp_callback() {
   if(drupal_is_front_page()){
   $header = array(
-    array('data' => 'ID', 'field' => 'tid', 'sort' => 'asc'),
+    array('data' => 'ID', 'field' => 'tid', 'sort' => 'desc'),
     array('data' => 'Title', 'field' => 'task_title'),
     array('data' => 'Status', 'field' => 'status'),
     array('data' => 'Date', 'field' => 'task_date'),
