@@ -63,6 +63,32 @@ function todolist_permission() {
     'title' => 'TodoList',
     'description' => 'Customizing the Todolist via the administration settings', 
     ),
+
+    'create todolist' => array(
+    'title' => 'Create TodoList ',
+    'description' => 'Customizing create Todolist via the administration settings', 
+    ),
+
+    'edit todolist' => array(
+    'title' => 'Edit TodoList ',
+    'description' => 'Customizing Edit Todolist via the administration settings', 
+    ),
+
+    'delete todolist' => array(
+    'title' => 'Delete TodoList',
+    'description' => 'Customizing delete Todolist via the administration settings', 
+    ),
+
+    'upload tasks todolist' => array(
+    'title' => 'upload tasks TodoList ',
+    'description' => 'Customizing upload_tasks Todolist via the administration settings', 
+    ),
+
+    'export_tasks todolist' => array(
+    'title' => 'Export Tasks TodoList ',
+    'description' => 'Customizing Export Tasks Todolist via the administration settings', 
+    ),
+
     'close tasks' => array(
       'title' => 'TodoList',
       'description' => 'Close Users Tasks', 
@@ -76,7 +102,9 @@ function todolist_permission() {
  */
 
 function todolist_listing_tasks() {
-  global $user;
+
+    global $user;
+
     
     $header = array(
     array('data' => 'ID', 'field' => 'tid', 'sort' => 'asc'),
@@ -87,8 +115,13 @@ function todolist_listing_tasks() {
     );
     
     $query = db_select('todolist_task', 'todo');
-    
-    $query->condition('user_id', $user->uid,'=');
+
+  
+    if (!in_array("administrator", $user->roles) or !in_array("manage all tasks", $user->roles)){
+
+      $query->condition('user_id', $user->uid,'=');
+
+    }
 
     $query->fields('todo', array('tid', 'task_title', 'status', 'task_date'));
     
